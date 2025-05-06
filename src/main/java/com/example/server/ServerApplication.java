@@ -10,11 +10,4 @@ public class ServerApplication {
 	}
 }
 
-//создать таблицу что бы работало
-// CREATE TABLE users (
-//    user_id SERIAL PRIMARY KEY,
-//    user_name VARCHAR(255),
-//    user_pass VARCHAR(255),
-//    user_age INT,
-//    user_email VARCHAR(255)
-//
+

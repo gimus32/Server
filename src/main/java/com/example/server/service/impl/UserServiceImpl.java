@@ -5,7 +5,6 @@ import com.example.server.mapping.UserMapper;
 import com.example.server.model.UserEntity;
 import com.example.server.repository.UserRepository;
 import com.example.server.service.UserService;
-import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
