@@ -1,0 +1,4150 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1746541631687-1
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createSequence:
+            incrementBy: 50
+            sequenceName: appointment_cancel_reason_ids
+            startValue: 1
+  - changeSet:
+      id: 1746541631687-2
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createSequence:
+            incrementBy: 50
+            sequenceName: device_controller_type_ids
+            startValue: 1
+  - changeSet:
+      id: 1746541631687-3
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createSequence:
+            incrementBy: 50
+            sequenceName: firmware_kind_ids
+            startValue: 1
+  - changeSet:
+      id: 1746541631687-4
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createSequence:
+            incrementBy: 50
+            sequenceName: laser_manipula_type_ids
+            startValue: 1
+  - changeSet:
+      id: 1746541631687-5
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createSequence:
+            incrementBy: 50
+            sequenceName: laser_type_ids
+            startValue: 1
+  - changeSet:
+      id: 1746541631687-6
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createSequence:
+            incrementBy: 1
+            sequenceName: users_user_id_seq
+            startValue: 1
+  - changeSet:
+      id: 1746541631687-7
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_appointment
+                  name: id
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: time
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: client
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: branch
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: duration
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: status
+                  type: SMALLINT
+              - column:
+                  name: cancel_reason
+                  type: INT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: master
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: end_time
+                  type: BIGINT
+              - column:
+                  name: ticket
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  defaultValueNumeric: 0.0
+                  name: cost
+                  type: DOUBLE precision
+              - column:
+                  constraints:
+                    nullable: false
+                  defaultValueNumeric: 0.0
+                  name: cost_raw
+                  type: DOUBLE precision
+              - column:
+                  constraints:
+                    nullable: false
+                  name: removed
+                  type: BOOLEAN
+            tableName: appointment
+  - changeSet:
+      id: 1746541631687-8
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_appointment_cancel_reason
+                  name: id
+                  type: INT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: display_name
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: removed
+                  type: BOOLEAN
+            tableName: appointment_cancel_reason
+  - changeSet:
+      id: 1746541631687-9
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                  name: appointment_entity_id
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: complexes_id
+                  type: char(36)
+            tableName: appointment_complexes
+  - changeSet:
+      id: 1746541631687-10
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_appointment_request
+                  name: id
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: time
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: client
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: master
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: branch
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: company
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: created_at
+                  type: BIGINT
+              - column:
+                  name: ticket
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: removed
+                  type: BOOLEAN
+            tableName: appointment_request
+  - changeSet:
+      id: 1746541631687-11
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                  name: appointment_request_entity_id
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: complexes_id
+                  type: char(36)
+            tableName: appointment_request_complexes
+  - changeSet:
+      id: 1746541631687-12
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                  name: services_id
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: appointment_request_entity_id
+                  type: char(36)
+            tableName: appointment_request_services
+  - changeSet:
+      id: 1746541631687-13
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                  name: appointment_request_entity_id
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: tickets_id
+                  type: char(36)
+            tableName: appointment_request_tickets
+  - changeSet:
+      id: 1746541631687-14
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                  name: appointment_entity_id
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: services_id
+                  type: char(36)
+            tableName: appointment_services
+  - changeSet:
+      id: 1746541631687-15
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                  name: appointment_entity_id
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: tickets_id
+                  type: char(36)
+            tableName: appointment_tickets
+  - changeSet:
+      id: 1746541631687-16
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_backup
+                  name: id
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: created_at
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: file
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: removed
+                  type: BOOLEAN
+            tableName: backup
+  - changeSet:
+      id: 1746541631687-17
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_branch
+                  name: id
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: company
+                  type: char(36)
+              - column:
+                  name: latitude
+                  type: DOUBLE precision
+              - column:
+                  name: longitude
+                  type: DOUBLE precision
+              - column:
+                  name: hash_4
+                  type: VARCHAR(4)
+              - column:
+                  name: hash_5
+                  type: VARCHAR(5)
+              - column:
+                  name: hash_6
+                  type: VARCHAR(6)
+              - column:
+                  name: hash_7
+                  type: VARCHAR(7)
+              - column:
+                  name: avatar
+                  type: char(36)
+              - column:
+                  name: description
+                  type: VARCHAR(255)
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  name: code
+                  type: VARCHAR(255)
+              - column:
+                  name: cover
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: phone
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: phone_country
+                  type: VARCHAR(255)
+              - column:
+                  name: additional
+                  type: VARCHAR(512)
+              - column:
+                  name: building
+                  type: VARCHAR(255)
+              - column:
+                  name: city
+                  type: VARCHAR(255)
+              - column:
+                  name: country
+                  type: VARCHAR(255)
+              - column:
+                  name: google_place_id
+                  type: VARCHAR(255)
+              - column:
+                  name: room
+                  type: VARCHAR(255)
+              - column:
+                  name: street
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: ready
+                  type: BOOLEAN
+              - column:
+                  constraints:
+                    nullable: false
+                  name: removed
+                  type: BOOLEAN
+            tableName: branch
+  - changeSet:
+      id: 1746541631687-18
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_branch_complex_relation
+                  name: id
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: branch
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: complex
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: category
+                  type: char(36)
+              - column:
+                  name: override_cost
+                  type: INT
+              - column:
+                  name: override_duration
+                  type: BYTEA
+              - column:
+                  name: override_break_duration
+                  type: BYTEA
+              - column:
+                  name: override_description
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: removed
+                  type: BOOLEAN
+            tableName: branch_complex_relation
+  - changeSet:
+      id: 1746541631687-19
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_branch_gallery_photo
+                  name: id
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: branch
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: file
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: created_at
+                  type: timestamp
+              - column:
+                  name: modified_at
+                  type: timestamp
+              - column:
+                  constraints:
+                    nullable: false
+                  name: removed
+                  type: BOOLEAN
+            tableName: branch_gallery_photo
+  - changeSet:
+      id: 1746541631687-20
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_branch_master_review
+                  name: id
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: rating
+                  type: INT
+              - column:
+                  name: comment
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: anon
+                  type: BOOLEAN
+              - column:
+                  constraints:
+                    nullable: false
+                  name: owner_id
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: master_id
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: appointment_id
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: branch_id
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: removed
+                  type: BOOLEAN
+              - column:
+                  constraints:
+                    nullable: false
+                  name: hidden
+                  type: BOOLEAN
+              - column:
+                  constraints:
+                    nullable: false
+                  name: created_at
+                  type: timestamp
+              - column:
+                  name: modified_at
+                  type: timestamp
+            tableName: branch_master_review
+  - changeSet:
+      id: 1746541631687-21
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_branch_report
+                  name: id
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: comment
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: anon
+                  type: BOOLEAN
+              - column:
+                  constraints:
+                    nullable: false
+                  name: user_id
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: branch_id
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: removed
+                  type: BOOLEAN
+              - column:
+                  constraints:
+                    nullable: false
+                  name: created_at
+                  type: timestamp
+              - column:
+                  name: modified_at
+                  type: timestamp
+            tableName: branch_report
+  - changeSet:
+      id: 1746541631687-22
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_branchreview
+                  name: id
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: rating
+                  type: INT
+              - column:
+                  name: comment
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: anon
+                  type: BOOLEAN
+              - column:
+                  constraints:
+                    nullable: false
+                  name: user_id
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: branch_id
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: removed
+                  type: BOOLEAN
+              - column:
+                  constraints:
+                    nullable: false
+                  name: created_at
+                  type: timestamp
+              - column:
+                  name: modified_at
+                  type: timestamp
+            tableName: branch_review
+  - changeSet:
+      id: 1746541631687-23
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_branch_service_relation
+                  name: id
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: branch
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: service
+                  type: char(36)
+              - column:
+                  name: override_cost
+                  type: INT
+              - column:
+                  name: override_duration
+                  type: BYTEA
+              - column:
+                  name: override_break_duration
+                  type: BYTEA
+              - column:
+                  name: override_description
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: removed
+                  type: BOOLEAN
+            tableName: branch_service_relation
+  - changeSet:
+      id: 1746541631687-24
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_branch_ticket_showcase
+                  name: id
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: branch
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: ticket_showcase
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: removed
+                  type: BOOLEAN
+            tableName: branch_ticket_showcase
+  - changeSet:
+      id: 1746541631687-25
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_city
+                  name: id
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: country_id
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: display_name
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: latitude
+                  type: DOUBLE precision
+              - column:
+                  constraints:
+                    nullable: false
+                  name: longitude
+                  type: DOUBLE precision
+              - column:
+                  name: geonames_timezone
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: removed
+                  type: BOOLEAN
+              - column:
+                  constraints:
+                    nullable: false
+                  name: index
+                  type: INT
+              - column:
+                  constraints:
+                    nullable: false
+                  defaultValue: ''
+                  name: region
+                  type: VARCHAR(50)
+            tableName: city
+  - changeSet:
+      id: 1746541631687-26
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                  name: city_entity_id
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: alternate_names
+                  type: VARCHAR(255)
+            tableName: city_entity_alternate_names
+  - changeSet:
+      id: 1746541631687-27
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_company
+                  name: id
+                  type: char(36)
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: country
+                  type: VARCHAR(255)
+              - column:
+                  name: avatar
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  defaultValueComputed: now()
+                  name: created_at
+                  type: timestamp
+              - column:
+                  defaultValueComputed: now()
+                  name: modified_at
+                  type: timestamp
+              - column:
+                  constraints:
+                    nullable: false
+                  name: removed
+                  type: BOOLEAN
+            tableName: company
+  - changeSet:
+      id: 1746541631687-28
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_company_client
+                  name: id
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: company
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: person
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: gender
+                  type: SMALLINT
+              - column:
+                  name: first_name
+                  type: VARCHAR(255)
+              - column:
+                  name: last_name
+                  type: VARCHAR(255)
+              - column:
+                  name: middle_name
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: created_at
+                  type: timestamp
+              - column:
+                  name: description
+                  type: VARCHAR(2048)
+              - column:
+                  name: last_session_date
+                  type: BIGINT
+              - column:
+                  name: modified_at
+                  type: timestamp
+              - column:
+                  constraints:
+                    nullable: false
+                  name: removed
+                  type: BOOLEAN
+            tableName: company_client
+  - changeSet:
+      id: 1746541631687-29
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_complexes
+                  name: id
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  name: description
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: cost
+                  type: INT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: break_after_session
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: duration
+                  type: BIGINT
+              - column:
+                  name: company
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: removed
+                  type: BOOLEAN
+              - column:
+                  name: service_category
+                  type: char(36)
+            tableName: complexes
+  - changeSet:
+      id: 1746541631687-30
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                  name: complex_entity_id
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: services_id
+                  type: char(36)
+            tableName: complexes_services
+  - changeSet:
+      id: 1746541631687-31
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_country
+                  name: id
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: display_name
+                  type: VARCHAR(255)
+              - column:
+                  name: emoji
+                  type: VARCHAR(255)
+              - column:
+                  name: iso_code_2
+                  type: VARCHAR(255)
+              - column:
+                  name: iso_code_num
+                  type: VARCHAR(255)
+              - column:
+                  name: image
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: removed
+                  type: BOOLEAN
+            tableName: country
+  - changeSet:
+      id: 1746541631687-32
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_laser
+                  name: id
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: serial_number
+                  type: VARCHAR(255)
+              - column:
+                  name: laser_type
+                  type: INT
+              - column:
+                  name: pincode
+                  type: VARCHAR(255)
+              - column:
+                  name: manipula_type
+                  type: INT
+              - column:
+                  name: controller_type
+                  type: INT
+              - column:
+                  name: company
+                  type: char(36)
+              - column:
+                  name: branch
+                  type: char(36)
+              - column:
+                  name: hwid
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: created_at
+                  type: timestamp
+              - column:
+                  name: modified_at
+                  type: timestamp
+              - column:
+                  name: owner_name
+                  type: VARCHAR(255)
+              - column:
+                  name: owner_phone
+                  type: VARCHAR(255)
+              - column:
+                  name: owner_address
+                  type: VARCHAR(255)
+              - column:
+                  name: activated_at
+                  type: BIGINT
+              - column:
+                  name: rent_until
+                  type: BIGINT
+              - column:
+                  name: token_identifier
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: removed
+                  type: BOOLEAN
+              - column:
+                  constraints:
+                    nullable: false
+                  defaultValue: LASER
+                  name: device_kind
+                  type: VARCHAR
+            tableName: device
+  - changeSet:
+      id: 1746541631687-33
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_device_appointment
+                  name: id
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: company
+                  type: char(36)
+              - column:
+                  name: client
+                  type: char(36)
+              - column:
+                  name: employee
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: start
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: duration
+                  type: BIGINT
+              - column:
+                  name: description
+                  type: VARCHAR(2048)
+              - column:
+                  name: appointment
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: service
+                  type: SMALLINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: created_at
+                  type: timestamp
+              - column:
+                  name: modified_at
+                  type: timestamp
+              - column:
+                  constraints:
+                    nullable: false
+                  name: removed
+                  type: BOOLEAN
+              - column:
+                  name: service_id
+                  type: VARCHAR(255)
+              - column:
+                  name: extra
+                  type: VARCHAR(2048)
+              - column:
+                  constraints:
+                    nullable: false
+                  defaultValue: LASER
+                  name: device_kind
+                  type: VARCHAR
+              - column:
+                  name: device_id
+                  type: char(36)
+              - column:
+                  name: device_session_service
+                  type: char(36)
+              - column:
+                  name: last_this_client_session_time
+                  type: BIGINT
+            tableName: device_appointment
+  - changeSet:
+      id: 1746541631687-34
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_device_controller_type
+                  name: id
+                  type: INT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: display_name
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: removed
+                  type: BOOLEAN
+              - column:
+                  constraints:
+                    nullable: false
+                  defaultValue: LASER
+                  name: device_type
+                  type: VARCHAR
+            tableName: device_controller_type
+  - changeSet:
+      id: 1746541631687-35
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_device_employee
+                  name: id
+                  type: char(36)
+              - column:
+                  name: person
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: company
+                  type: char(36)
+              - column:
+                  name: user
+                  type: char(36)
+              - column:
+                  name: first_name
+                  type: VARCHAR(255)
+              - column:
+                  name: last_name
+                  type: VARCHAR(255)
+              - column:
+                  name: middle_name
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: created_at
+                  type: timestamp
+              - column:
+                  name: modified_at
+                  type: timestamp
+              - column:
+                  constraints:
+                    nullable: false
+                  name: removed
+                  type: BOOLEAN
+              - column:
+                  constraints:
+                    nullable: false
+                  name: phone_number
+                  type: VARCHAR(255)
+            tableName: device_employee
+  - changeSet:
+      id: 1746541631687-36
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_device_person
+                  name: id
+                  type: char(36)
+              - column:
+                  name: person
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: raw_phone
+                  type: VARCHAR(255)
+              - column:
+                  name: first_name
+                  type: VARCHAR(255)
+              - column:
+                  name: last_name
+                  type: VARCHAR(255)
+              - column:
+                  name: middle_name
+                  type: VARCHAR(255)
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: gender
+                  type: SMALLINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: device
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: company
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: removed
+                  type: BOOLEAN
+            tableName: device_person
+  - changeSet:
+      id: 1746541631687-37
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_laser_rendered_session_services
+                  name: id
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: service
+                  type: char(36)
+              - column:
+                  name: flashes
+                  type: INT
+              - column:
+                  name: energy_min
+                  type: INT
+              - column:
+                  name: energy_max
+                  type: INT
+              - column:
+                  name: frequency_min
+                  type: INT
+              - column:
+                  name: frequency_max
+                  type: INT
+              - column:
+                  name: pulse_min
+                  type: INT
+              - column:
+                  name: pulse_max
+                  type: INT
+              - column:
+                  name: duration
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: removed
+                  type: BOOLEAN
+              - column:
+                  name: large_handle_time
+                  type: INT
+              - column:
+                  name: large_handle_power
+                  type: INT
+              - column:
+                  name: small_handle_time
+                  type: INT
+              - column:
+                  name: small_handle_power
+                  type: INT
+            tableName: device_rendered_session_info
+  - changeSet:
+      id: 1746541631687-38
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_employee_invitations
+                  name: id
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: company
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: person
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: role
+                  type: SMALLINT
+              - column:
+                  name: branch
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: status
+                  type: SMALLINT
+              - column:
+                  name: created_at
+                  type: timestamp
+              - column:
+                  name: modified_at
+                  type: timestamp
+              - column:
+                  constraints:
+                    nullable: false
+                  name: expires_at
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: removed
+                  type: BOOLEAN
+            tableName: employee_invitations
+  - changeSet:
+      id: 1746541631687-39
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_favourite_branch
+                  name: id
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: user
+                  type: char(36)
+              - column:
+                  name: branch
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: removed
+                  type: BOOLEAN
+            tableName: favourite_branch
+  - changeSet:
+      id: 1746541631687-40
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_file
+                  name: id
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: size
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: file_path
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: kind
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: server
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: access_token
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: assigned
+                  type: BOOLEAN
+              - column:
+                  constraints:
+                    nullable: false
+                  name: removed
+                  type: BOOLEAN
+            tableName: file
+  - changeSet:
+      id: 1746541631687-41
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_file_reference
+                  name: id
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: file
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: removed
+                  type: BOOLEAN
+            tableName: file_reference
+  - changeSet:
+      id: 1746541631687-42
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_file_server
+                  name: id
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: kind
+                  type: VARCHAR(255)
+              - column:
+                  name: download_url
+                  type: VARCHAR(255)
+              - column:
+                  name: additional_properties
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: removed
+                  type: BOOLEAN
+            tableName: file_server
+  - changeSet:
+      id: 1746541631687-43
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                  name: server
+                  type: char(36)
+              - column:
+                  name: alias
+                  type: VARCHAR(255)
+            tableName: file_server_aliases
+  - changeSet:
+      id: 1746541631687-44
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_firmware
+                  name: id
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: kind
+                  type: INT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: file
+                  type: char(36)
+              - column:
+                  name: additional_properties
+                  type: OID
+              - column:
+                  constraints:
+                    nullable: false
+                  name: created_at
+                  type: timestamp
+              - column:
+                  name: description
+                  type: OID
+              - column:
+                  name: modified_at
+                  type: timestamp
+              - column:
+                  name: note
+                  type: OID
+              - column:
+                  constraints:
+                    nullable: false
+                  name: removed
+                  type: BOOLEAN
+            tableName: firmware
+  - changeSet:
+      id: 1746541631687-45
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_firmware_kind
+                  name: id
+                  type: INT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: display_name
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: removed
+                  type: BOOLEAN
+            tableName: firmware_kind
+  - changeSet:
+      id: 1746541631687-46
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                  name: firmware
+                  type: char(36)
+              - column:
+                  name: tags
+                  type: VARCHAR(255)
+            tableName: firmware_tags
+  - changeSet:
+      id: 1746541631687-47
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_laser_manipula_type
+                  name: id
+                  type: INT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: display_name
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: removed
+                  type: BOOLEAN
+            tableName: laser_manipula_type
+  - changeSet:
+      id: 1746541631687-48
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_laser_type
+                  name: id
+                  type: INT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: display_name
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: removed
+                  type: BOOLEAN
+            tableName: laser_type
+  - changeSet:
+      id: 1746541631687-49
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_master_schedule_request
+                  name: id
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: master_id
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: branch_id
+                  type: char(36)
+              - column:
+                  name: shift_id
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: new_start
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: new_end
+                  type: BIGINT
+              - column:
+                  name: new_break_start
+                  type: BIGINT
+              - column:
+                  name: new_break_end
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: status
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: created_at
+                  type: timestamp
+              - column:
+                  name: modified_at
+                  type: timestamp
+              - column:
+                  constraints:
+                    nullable: false
+                  name: removed
+                  type: BOOLEAN
+              - column:
+                  name: comment
+                  type: VARCHAR(255)
+            tableName: master_schedule_request
+  - changeSet:
+      id: 1746541631687-50
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_offer
+                  name: id
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: title
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: description
+                  type: VARCHAR(5120)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: expires_at
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: branch
+                  type: char(36)
+              - column:
+                  name: avatar
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: start_at
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: cost
+                  type: INT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: removed
+                  type: BOOLEAN
+              - column:
+                  name: complex
+                  type: char(36)
+            tableName: offer
+  - changeSet:
+      id: 1746541631687-51
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                  name: offer
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: service
+                  type: char(36)
+            tableName: offer_service
+  - changeSet:
+      id: 1746541631687-52
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_person
+                  name: id
+                  type: char(36)
+              - column:
+                  name: user
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: phone
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: phone_country
+                  type: VARCHAR(255)
+              - column:
+                  name: code
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: removed
+                  type: BOOLEAN
+            tableName: person
+  - changeSet:
+      id: 1746541631687-53
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_phone_country_code
+                  name: id
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: code
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: pattern
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: mask
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: country
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: display_name
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: removed
+                  type: BOOLEAN
+            tableName: phone_country_code
+  - changeSet:
+      id: 1746541631687-54
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_production_laser_sync
+                  name: id
+                  type: char(36)
+              - column:
+                  name: master
+                  type: char(36)
+              - column:
+                  name: laser_id
+                  type: INT
+              - column:
+                  name: branch
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: created_at
+                  type: timestamp
+              - column:
+                  name: modified_at
+                  type: timestamp
+              - column:
+                  constraints:
+                    nullable: false
+                  name: removed
+                  type: BOOLEAN
+            tableName: production_laser_sync
+  - changeSet:
+      id: 1746541631687-55
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_render_servicies
+                  name: id
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: service
+                  type: char(36)
+              - column:
+                  name: duration
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: removed
+                  type: BOOLEAN
+            tableName: render_servicies
+  - changeSet:
+      id: 1746541631687-56
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                  name: rendered_session_entity_id
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: services_id
+                  type: char(36)
+            tableName: rendered_session_services
+  - changeSet:
+      id: 1746541631687-57
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_rendered_sessions
+                  name: id
+                  type: char(36)
+              - column:
+                  name: appointment
+                  type: char(36)
+              - column:
+                  name: branch
+                  type: char(36)
+              - column:
+                  name: laser
+                  type: char(36)
+              - column:
+                  name: start
+                  type: BIGINT
+              - column:
+                  name: duration
+                  type: BIGINT
+              - column:
+                  name: client
+                  type: char(36)
+              - column:
+                  name: master
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: removed
+                  type: BOOLEAN
+            tableName: rendered_sessions
+  - changeSet:
+      id: 1746541631687-58
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_service_categories
+                  name: id
+                  type: char(36)
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: owner_company
+                  type: char(36)
+              - column:
+                  name: internal_type
+                  type: SMALLINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: removed
+                  type: BOOLEAN
+            tableName: service_categories
+  - changeSet:
+      id: 1746541631687-59
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_services
+                  name: id
+                  type: char(36)
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  name: description
+                  type: VARCHAR(255)
+              - column:
+                  name: cost
+                  type: INT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: category
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: break_after_session
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: duration
+                  type: BIGINT
+              - column:
+                  name: internal_type
+                  type: SMALLINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: removed
+                  type: BOOLEAN
+            tableName: services
+  - changeSet:
+      id: 1746541631687-60
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_session
+                  name: id
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: type
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: owner_id
+                  type: char(36)
+              - column:
+                  name: active
+                  type: BOOLEAN
+              - column:
+                  name: address
+                  type: INET
+              - column:
+                  name: user_agent
+                  type: VARCHAR(255)
+              - column:
+                  name: device_id
+                  type: VARCHAR(255)
+              - column:
+                  name: authentication
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: time
+                  type: BIGINT
+              - column:
+                  name: activated_at
+                  type: BIGINT
+              - column:
+                  name: expires_at
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: removed
+                  type: BOOLEAN
+            tableName: session
+  - changeSet:
+      id: 1746541631687-61
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                  name: id
+                  type: char(36)
+              - column:
+                  name: session_permissions
+                  type: VARCHAR(255)
+            tableName: session_permissions
+  - changeSet:
+      id: 1746541631687-62
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_shift
+                  name: id
+                  type: char(36)
+              - column:
+                  name: master
+                  type: char(36)
+              - column:
+                  name: branch
+                  type: char(36)
+              - column:
+                  name: break_end
+                  type: BIGINT
+              - column:
+                  name: break_start
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: end
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: start
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: removed
+                  type: BOOLEAN
+            tableName: shift
+  - changeSet:
+      id: 1746541631687-63
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_ticket
+                  name: id
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: description
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: price
+                  type: INT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: usages
+                  type: INT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: color
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: branch
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: used
+                  type: INT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: user
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: version
+                  type: INT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: removed
+                  type: BOOLEAN
+            tableName: ticket
+  - changeSet:
+      id: 1746541631687-64
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                  name: complex
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: ticket
+                  type: char(36)
+            tableName: ticket_complexes
+  - changeSet:
+      id: 1746541631687-65
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                  name: service
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: ticket
+                  type: char(36)
+            tableName: ticket_service
+  - changeSet:
+      id: 1746541631687-66
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_ticket_showcase
+                  name: id
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: description
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: price
+                  type: INT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: usages
+                  type: INT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: color
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: company
+                  type: char(36)
+              - column:
+                  name: branch
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: removed
+                  type: BOOLEAN
+            tableName: ticket_showcase
+  - changeSet:
+      id: 1746541631687-67
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                  name: complex
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: ticket
+                  type: char(36)
+            tableName: ticket_showcases_complexes
+  - changeSet:
+      id: 1746541631687-68
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                  name: service
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: ticket
+                  type: char(36)
+            tableName: ticket_showcases_services
+  - changeSet:
+      id: 1746541631687-69
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_timeslot_book
+                  name: id
+                  type: char(36)
+              - column:
+                  name: appointment_id
+                  type: char(36)
+              - column:
+                  name: branch_id
+                  type: char(36)
+              - column:
+                  name: master_id
+                  type: char(36)
+              - column:
+                  name: start
+                  type: BIGINT
+              - column:
+                  name: end
+                  type: BIGINT
+              - column:
+                  name: timeslot
+                  type: INT
+              - column:
+                  name: duration
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: removed
+                  type: BOOLEAN
+            tableName: timeslot_book
+  - changeSet:
+      id: 1746541631687-70
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: user_pkey
+                  name: user_id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: user_name
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: user_pass
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: user_age
+                  type: INT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: user_email
+                  type: VARCHAR(255)
+            tableName: user
+  - changeSet:
+      id: 1746541631687-71
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_user_company_relation
+                  name: id
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: user
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: company
+                  type: char(36)
+              - column:
+                  name: branch
+                  type: char(36)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: role
+                  type: SMALLINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: removed
+                  type: BOOLEAN
+            tableName: user_company_relation
+  - changeSet:
+      id: 1746541631687-72
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: users_pkey
+                  name: user_id
+                  type: INT
+              - column:
+                  name: user_name
+                  type: VARCHAR(255)
+              - column:
+                  name: user_pass
+                  type: VARCHAR(255)
+              - column:
+                  name: user_age
+                  type: INT
+              - column:
+                  name: user_email
+                  type: VARCHAR(255)
+            tableName: users
+  - changeSet:
+      id: 1746541631687-73
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addUniqueConstraint:
+            columnNames: file
+            constraintName: uc_backup_file
+            tableName: backup
+  - changeSet:
+      id: 1746541631687-74
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addUniqueConstraint:
+            columnNames: avatar
+            constraintName: uc_branch_avatar
+            tableName: branch
+  - changeSet:
+      id: 1746541631687-75
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addUniqueConstraint:
+            columnNames: cover
+            constraintName: uc_branch_cover
+            tableName: branch
+  - changeSet:
+      id: 1746541631687-76
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addUniqueConstraint:
+            columnNames: file
+            constraintName: uc_branch_gallery_photo_file
+            tableName: branch_gallery_photo
+  - changeSet:
+      id: 1746541631687-77
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addUniqueConstraint:
+            columnNames: appointment_id, master_id
+            constraintName: uc_branch_master_review_entity_appointment_id_master_id
+            tableName: branch_master_review
+  - changeSet:
+      id: 1746541631687-78
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addUniqueConstraint:
+            columnNames: branch, service
+            constraintName: uc_branch_service_relation_entity_branch_service
+            tableName: branch_service_relation
+  - changeSet:
+      id: 1746541631687-79
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addUniqueConstraint:
+            columnNames: avatar
+            constraintName: uc_company_avatar
+            tableName: company
+  - changeSet:
+      id: 1746541631687-80
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addUniqueConstraint:
+            columnNames: company, person
+            constraintName: uc_company_client_entity__company_person
+            tableName: company_client
+  - changeSet:
+      id: 1746541631687-81
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addUniqueConstraint:
+            columnNames: user
+            constraintName: uc_favourite_branch_entity_a_b
+            tableName: favourite_branch
+  - changeSet:
+      id: 1746541631687-82
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addUniqueConstraint:
+            columnNames: file_path, server
+            constraintName: uc_fileentity_file_path
+            tableName: file
+  - changeSet:
+      id: 1746541631687-83
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addUniqueConstraint:
+            columnNames: file
+            constraintName: uc_firmware_file
+            tableName: firmware
+  - changeSet:
+      id: 1746541631687-84
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addUniqueConstraint:
+            columnNames: avatar
+            constraintName: uc_offer_avatar
+            tableName: offer
+  - changeSet:
+      id: 1746541631687-85
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addUniqueConstraint:
+            columnNames: user
+            constraintName: uc_person_user
+            tableName: person
+  - changeSet:
+      id: 1746541631687-86
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addUniqueConstraint:
+            columnNames: services_id
+            constraintName: uc_rendered_session_services_services
+            tableName: rendered_session_services
+  - changeSet:
+      id: 1746541631687-87
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addUniqueConstraint:
+            columnNames: appointment
+            constraintName: uc_service_entity_appointment
+            tableName: rendered_sessions
+  - changeSet:
+      id: 1746541631687-90
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createIndex:
+            columns:
+              - column:
+                  name: branch_id
+              - column:
+                  name: master_id
+            indexName: idx_branch_master_review_entity_branch_id_master_id
+            tableName: branch_master_review
+  - changeSet:
+      id: 1746541631687-91
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createIndex:
+            columns:
+              - column:
+                  name: branch_id
+              - column:
+                  name: master_id
+              - column:
+                  name: removed
+            indexName: idx_branch_master_review_entity_branch_id_master_id_removed
+            tableName: branch_master_review
+  - changeSet:
+      id: 1746541631687-92
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createIndex:
+            columns:
+              - column:
+                  name: master_id
+            indexName: idx_branch_master_review_entity_master_id
+            tableName: branch_master_review
+  - changeSet:
+      id: 1746541631687-93
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createIndex:
+            columns:
+              - column:
+                  name: owner_id
+            indexName: idx_branch_master_review_entity_owner_id
+            tableName: branch_master_review
+  - changeSet:
+      id: 1746541631687-94
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createIndex:
+            columns:
+              - column:
+                  name: person
+              - column:
+                  name: company
+            indexName: idx_device_person_entity_id_person_company
+            tableName: device_person
+  - changeSet:
+      id: 1746541631687-95
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createIndex:
+            columns:
+              - column:
+                  name: phone
+            indexName: idx_person_entity_phone
+            tableName: person
+  - changeSet:
+      id: 1746541631687-96
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: appointment_entity_id
+            baseTableName: appointment_complexes
+            constraintName: fk_appcom_on_appointment_entity
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: appointment
+  - changeSet:
+      id: 1746541631687-97
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: complexes_id
+            baseTableName: appointment_complexes
+            constraintName: fk_appcom_on_complex_entity
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: complexes
+  - changeSet:
+      id: 1746541631687-98
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: branch
+            baseTableName: appointment
+            constraintName: fk_appointment_on_branch
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: branch
+  - changeSet:
+      id: 1746541631687-99
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: cancel_reason
+            baseTableName: appointment
+            constraintName: fk_appointment_on_cancelreason
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: appointment_cancel_reason
+  - changeSet:
+      id: 1746541631687-100
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: client
+            baseTableName: appointment
+            constraintName: fk_appointment_on_client
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: company_client
+  - changeSet:
+      id: 1746541631687-101
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: ticket
+            baseTableName: appointment
+            constraintName: fk_appointment_on_ticket
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: ticket
+  - changeSet:
+      id: 1746541631687-102
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: branch
+            baseTableName: appointment_request
+            constraintName: fk_appointment_request_on_branch
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: branch
+  - changeSet:
+      id: 1746541631687-103
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: client
+            baseTableName: appointment_request
+            constraintName: fk_appointment_request_on_client
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: company_client
+  - changeSet:
+      id: 1746541631687-104
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: company
+            baseTableName: appointment_request
+            constraintName: fk_appointment_request_on_company
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: company
+  - changeSet:
+      id: 1746541631687-105
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: ticket
+            baseTableName: appointment_request
+            constraintName: fk_appointment_request_on_ticket
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: ticket
+  - changeSet:
+      id: 1746541631687-106
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: appointment_request_entity_id
+            baseTableName: appointment_request_services
+            constraintName: fk_appreqser_on_appointment_request_entity
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: appointment_request
+  - changeSet:
+      id: 1746541631687-107
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: services_id
+            baseTableName: appointment_request_services
+            constraintName: fk_appreqser_on_service_entity
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: services
+  - changeSet:
+      id: 1746541631687-108
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: appointment_entity_id
+            baseTableName: appointment_services
+            constraintName: fk_appser_on_appointment_entity
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: appointment
+  - changeSet:
+      id: 1746541631687-109
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: services_id
+            baseTableName: appointment_services
+            constraintName: fk_appser_on_service_entity
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: services
+  - changeSet:
+      id: 1746541631687-110
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: created_at
+            baseTableName: backup
+            constraintName: fk_backup_on_created_at
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: device
+  - changeSet:
+      id: 1746541631687-111
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: file
+            baseTableName: backup
+            constraintName: fk_backup_on_file
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: file_reference
+  - changeSet:
+      id: 1746541631687-112
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: branch
+            baseTableName: branch_complex_relation
+            constraintName: fk_branch_complex_relation_on_branch
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: branch
+  - changeSet:
+      id: 1746541631687-113
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: category
+            baseTableName: branch_complex_relation
+            constraintName: fk_branch_complex_relation_on_category
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: service_categories
+  - changeSet:
+      id: 1746541631687-114
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: complex
+            baseTableName: branch_complex_relation
+            constraintName: fk_branch_complex_relation_on_complex
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: complexes
+  - changeSet:
+      id: 1746541631687-115
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: branch
+            baseTableName: branch_gallery_photo
+            constraintName: fk_branch_gallery_photo_on_branch
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: branch
+  - changeSet:
+      id: 1746541631687-116
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: file
+            baseTableName: branch_gallery_photo
+            constraintName: fk_branch_gallery_photo_on_file
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: file_reference
+  - changeSet:
+      id: 1746541631687-117
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: appointment_id
+            baseTableName: branch_master_review
+            constraintName: fk_branch_master_review_on_appointment
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: appointment
+        - createIndex:
+            columns:
+              - column:
+                  name: appointment_id
+            indexName: idx_branch_master_review_entity_appointment_id
+            tableName: branch_master_review
+  - changeSet:
+      id: 1746541631687-118
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: branch_id
+            baseTableName: branch_master_review
+            constraintName: fk_branch_master_review_on_branch
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: branch
+        - createIndex:
+            columns:
+              - column:
+                  name: branch_id
+            indexName: idx_branch_master_review_entity_branch_id
+            tableName: branch_master_review
+  - changeSet:
+      id: 1746541631687-119
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: avatar
+            baseTableName: branch
+            constraintName: fk_branch_on_avatar
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: file_reference
+  - changeSet:
+      id: 1746541631687-120
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: city
+            baseTableName: branch
+            constraintName: fk_branch_on_city
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: city
+  - changeSet:
+      id: 1746541631687-121
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: code
+            baseTableName: branch
+            constraintName: fk_branch_on_code
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: phone_country_code
+  - changeSet:
+      id: 1746541631687-122
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: company
+            baseTableName: branch
+            constraintName: fk_branch_on_company
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: company
+  - changeSet:
+      id: 1746541631687-123
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: country
+            baseTableName: branch
+            constraintName: fk_branch_on_country
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: country
+  - changeSet:
+      id: 1746541631687-124
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: cover
+            baseTableName: branch
+            constraintName: fk_branch_on_cover
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: file_reference
+  - changeSet:
+      id: 1746541631687-125
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: phone_country
+            baseTableName: branch
+            constraintName: fk_branch_on_phone_country
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: country
+  - changeSet:
+      id: 1746541631687-126
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: branch
+            baseTableName: branch_service_relation
+            constraintName: fk_branch_service_relation_on_branch
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: branch
+  - changeSet:
+      id: 1746541631687-127
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: service
+            baseTableName: branch_service_relation
+            constraintName: fk_branch_service_relation_on_service
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: services
+  - changeSet:
+      id: 1746541631687-128
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: branch
+            baseTableName: branch_ticket_showcase
+            constraintName: fk_branch_ticket_showcase_on_branch
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: branch
+  - changeSet:
+      id: 1746541631687-129
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: ticket_showcase
+            baseTableName: branch_ticket_showcase
+            constraintName: fk_branch_ticket_showcase_on_ticket_showcase
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: ticket_showcase
+  - changeSet:
+      id: 1746541631687-130
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: country_id
+            baseTableName: city
+            constraintName: fk_city_on_country
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: country
+  - changeSet:
+      id: 1746541631687-131
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: city_entity_id
+            baseTableName: city_entity_alternate_names
+            constraintName: fk_cityentity_alternatenames_on_city_entity
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: city
+  - changeSet:
+      id: 1746541631687-132
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: company
+            baseTableName: company_client
+            constraintName: fk_company_client_on_company
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: company
+  - changeSet:
+      id: 1746541631687-133
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: person
+            baseTableName: company_client
+            constraintName: fk_company_client_on_person
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: person
+  - changeSet:
+      id: 1746541631687-134
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: avatar
+            baseTableName: company
+            constraintName: fk_company_on_avatar
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: file_reference
+  - changeSet:
+      id: 1746541631687-135
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: country
+            baseTableName: company
+            constraintName: fk_company_on_country
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: country
+  - changeSet:
+      id: 1746541631687-136
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: company
+            baseTableName: complexes
+            constraintName: fk_complexes_on_company
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: company
+  - changeSet:
+      id: 1746541631687-137
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: service_category
+            baseTableName: complexes
+            constraintName: fk_complexes_on_service_category
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: service_categories
+  - changeSet:
+      id: 1746541631687-138
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: complex_entity_id
+            baseTableName: complexes_services
+            constraintName: fk_comser_on_complex_entity
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: complexes
+  - changeSet:
+      id: 1746541631687-139
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: services_id
+            baseTableName: complexes_services
+            constraintName: fk_comser_on_service_entity
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: services
+  - changeSet:
+      id: 1746541631687-140
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: appointment
+            baseTableName: device_appointment
+            constraintName: fk_device_appointment_on_appointment
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: appointment
+  - changeSet:
+      id: 1746541631687-141
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: client
+            baseTableName: device_appointment
+            constraintName: fk_device_appointment_on_client
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: company_client
+  - changeSet:
+      id: 1746541631687-142
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: company
+            baseTableName: device_appointment
+            constraintName: fk_device_appointment_on_company
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: company
+  - changeSet:
+      id: 1746541631687-143
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: employee
+            baseTableName: device_appointment
+            constraintName: fk_device_appointment_on_employee
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: device_employee
+  - changeSet:
+      id: 1746541631687-144
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: company
+            baseTableName: device_employee
+            constraintName: fk_device_employee_on_company
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: company
+  - changeSet:
+      id: 1746541631687-145
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: person
+            baseTableName: device_employee
+            constraintName: fk_device_employee_on_person
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: person
+  - changeSet:
+      id: 1746541631687-146
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: branch
+            baseTableName: employee_invitations
+            constraintName: fk_employee_invitations_on_branch
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: branch
+  - changeSet:
+      id: 1746541631687-147
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: company
+            baseTableName: employee_invitations
+            constraintName: fk_employee_invitations_on_company
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: company
+  - changeSet:
+      id: 1746541631687-148
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: person
+            baseTableName: employee_invitations
+            constraintName: fk_employee_invitations_on_person
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: person
+  - changeSet:
+      id: 1746541631687-149
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: branch
+            baseTableName: favourite_branch
+            constraintName: fk_favourite_branch_on_branch
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: branch
+  - changeSet:
+      id: 1746541631687-150
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: server
+            baseTableName: file
+            constraintName: fk_file_on_server
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: file_server
+  - changeSet:
+      id: 1746541631687-151
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: file
+            baseTableName: file_reference
+            constraintName: fk_file_reference_on_file
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: file
+  - changeSet:
+      id: 1746541631687-152
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: server
+            baseTableName: file_server_aliases
+            constraintName: fk_file_server_aliases_on_file_server_entity
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: file_server
+  - changeSet:
+      id: 1746541631687-153
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: file
+            baseTableName: firmware
+            constraintName: fk_firmware_on_file
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: file_reference
+  - changeSet:
+      id: 1746541631687-154
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: kind
+            baseTableName: firmware
+            constraintName: fk_firmware_on_kind
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: firmware_kind
+  - changeSet:
+      id: 1746541631687-155
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: firmware
+            baseTableName: firmware_tags
+            constraintName: fk_firmware_tags_on_firmware_entity
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: firmware
+  - changeSet:
+      id: 1746541631687-156
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: branch
+            baseTableName: device
+            constraintName: fk_laser_on_branch
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: branch
+  - changeSet:
+      id: 1746541631687-157
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: company
+            baseTableName: device
+            constraintName: fk_laser_on_company
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: company
+  - changeSet:
+      id: 1746541631687-158
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: controller_type
+            baseTableName: device
+            constraintName: fk_laser_on_controller_type
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: device_controller_type
+  - changeSet:
+      id: 1746541631687-159
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: laser_type
+            baseTableName: device
+            constraintName: fk_laser_on_laser_type
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: laser_type
+  - changeSet:
+      id: 1746541631687-160
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: manipula_type
+            baseTableName: device
+            constraintName: fk_laser_on_manipula_type
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: laser_manipula_type
+  - changeSet:
+      id: 1746541631687-161
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: company
+            baseTableName: device_person
+            constraintName: fk_laser_person_on_company
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: company
+  - changeSet:
+      id: 1746541631687-162
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: device
+            baseTableName: device_person
+            constraintName: fk_laser_person_on_laser
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: device
+  - changeSet:
+      id: 1746541631687-163
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: person
+            baseTableName: device_person
+            constraintName: fk_laser_person_on_person
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: person
+  - changeSet:
+      id: 1746541631687-164
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: service
+            baseTableName: device_rendered_session_info
+            constraintName: fk_laser_rendered_session_services_on_service
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: services
+  - changeSet:
+      id: 1746541631687-165
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: branch_id
+            baseTableName: master_schedule_request
+            constraintName: fk_master_schedule_request_on_branch
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: branch
+  - changeSet:
+      id: 1746541631687-166
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: shift_id
+            baseTableName: master_schedule_request
+            constraintName: fk_master_schedule_request_on_shift
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: shift
+  - changeSet:
+      id: 1746541631687-167
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: avatar
+            baseTableName: offer
+            constraintName: fk_offer_on_avatar
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: file_reference
+  - changeSet:
+      id: 1746541631687-168
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: branch
+            baseTableName: offer
+            constraintName: fk_offer_on_branch
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: branch
+  - changeSet:
+      id: 1746541631687-169
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: complex
+            baseTableName: offer
+            constraintName: fk_offer_on_complex
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: complexes
+  - changeSet:
+      id: 1746541631687-170
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: offer
+            baseTableName: offer_service
+            constraintName: fk_offser_on_offer_entity
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: offer
+  - changeSet:
+      id: 1746541631687-171
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: service
+            baseTableName: offer_service
+            constraintName: fk_offser_on_service_entity
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: services
+  - changeSet:
+      id: 1746541631687-172
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: code
+            baseTableName: person
+            constraintName: fk_person_on_code
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: phone_country_code
+  - changeSet:
+      id: 1746541631687-173
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: phone_country
+            baseTableName: person
+            constraintName: fk_person_on_phone_country
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: country
+  - changeSet:
+      id: 1746541631687-174
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: country
+            baseTableName: phone_country_code
+            constraintName: fk_phone_country_code_on_country
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: country
+  - changeSet:
+      id: 1746541631687-175
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: branch
+            baseTableName: production_laser_sync
+            constraintName: fk_production_laser_sync_on_branch
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: branch
+  - changeSet:
+      id: 1746541631687-176
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: service
+            baseTableName: render_servicies
+            constraintName: fk_render_servicies_on_service
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: services
+  - changeSet:
+      id: 1746541631687-177
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: appointment
+            baseTableName: rendered_sessions
+            constraintName: fk_rendered_sessions_on_appointment
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: appointment
+  - changeSet:
+      id: 1746541631687-178
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: branch
+            baseTableName: rendered_sessions
+            constraintName: fk_rendered_sessions_on_branch
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: branch
+  - changeSet:
+      id: 1746541631687-179
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: client
+            baseTableName: rendered_sessions
+            constraintName: fk_rendered_sessions_on_client
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: person
+  - changeSet:
+      id: 1746541631687-180
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: laser
+            baseTableName: rendered_sessions
+            constraintName: fk_rendered_sessions_on_laser
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: device
+  - changeSet:
+      id: 1746541631687-181
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: master
+            baseTableName: rendered_sessions
+            constraintName: fk_rendered_sessions_on_master
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: person
+  - changeSet:
+      id: 1746541631687-182
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: services_id
+            baseTableName: rendered_session_services
+            constraintName: fk_rensesser_on_rendered_service_entity
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: render_servicies
+  - changeSet:
+      id: 1746541631687-183
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: rendered_session_entity_id
+            baseTableName: rendered_session_services
+            constraintName: fk_rensesser_on_rendered_session_entity
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: rendered_sessions
+  - changeSet:
+      id: 1746541631687-184
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: owner_company
+            baseTableName: service_categories
+            constraintName: fk_service_categories_on_owner_company
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: company
+  - changeSet:
+      id: 1746541631687-185
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: category
+            baseTableName: services
+            constraintName: fk_services_on_category
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: service_categories
+  - changeSet:
+      id: 1746541631687-186
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: id
+            baseTableName: session_permissions
+            constraintName: fk_session_permissions_on_session_entity
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: session
+  - changeSet:
+      id: 1746541631687-187
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: branch
+            baseTableName: shift
+            constraintName: fk_shift_on_branch
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: branch
+  - changeSet:
+      id: 1746541631687-188
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: complex
+            baseTableName: ticket_complexes
+            constraintName: fk_ticcom_on_complex_entity
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: complexes
+  - changeSet:
+      id: 1746541631687-189
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: ticket
+            baseTableName: ticket_complexes
+            constraintName: fk_ticcom_on_ticket_entity
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: ticket
+  - changeSet:
+      id: 1746541631687-190
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: branch
+            baseTableName: ticket
+            constraintName: fk_ticket_on_branch
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: branch
+  - changeSet:
+      id: 1746541631687-191
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: branch
+            baseTableName: ticket_showcase
+            constraintName: fk_ticket_showcase_on_branch
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: branch
+  - changeSet:
+      id: 1746541631687-192
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: company
+            baseTableName: ticket_showcase
+            constraintName: fk_ticket_showcase_on_company
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: company
+  - changeSet:
+      id: 1746541631687-193
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: service
+            baseTableName: ticket_service
+            constraintName: fk_ticser_on_service_entity
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: services
+  - changeSet:
+      id: 1746541631687-194
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: ticket
+            baseTableName: ticket_service
+            constraintName: fk_ticser_on_ticket_entity
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: ticket
+  - changeSet:
+      id: 1746541631687-195
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: complex
+            baseTableName: ticket_showcases_complexes
+            constraintName: fk_ticshocom_on_complex_entity
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: complexes
+  - changeSet:
+      id: 1746541631687-196
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: ticket
+            baseTableName: ticket_showcases_complexes
+            constraintName: fk_ticshocom_on_ticket_showcase_entity
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: ticket_showcase
+  - changeSet:
+      id: 1746541631687-197
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: service
+            baseTableName: ticket_showcases_services
+            constraintName: fk_ticshoser_on_service_entity
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: services
+  - changeSet:
+      id: 1746541631687-198
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: ticket
+            baseTableName: ticket_showcases_services
+            constraintName: fk_ticshoser_on_ticket_showcase_entity
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: ticket_showcase
+  - changeSet:
+      id: 1746541631687-199
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: appointment_id
+            baseTableName: timeslot_book
+            constraintName: fk_timeslot_book_on_appointment
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: appointment
+  - changeSet:
+      id: 1746541631687-200
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: branch_id
+            baseTableName: timeslot_book
+            constraintName: fk_timeslot_book_on_branch
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: branch
+  - changeSet:
+      id: 1746541631687-201
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: branch
+            baseTableName: user_company_relation
+            constraintName: fk_user_company_relation_on_branch
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: branch
+  - changeSet:
+      id: 1746541631687-202
+      author: Никита
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: company
+            baseTableName: user_company_relation
+            constraintName: fk_user_company_relation_on_company
+            onDelete: NO ACTION
+            referencedColumnNames: id
+            referencedTableName: company
+
