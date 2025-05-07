@@ -1,73 +1,33 @@
-databaseChangeLog:
-  - - changeSet:
-        id: 7
-        author: user
-        changes:
-          - createType:
-              catalogName: public
-              typeName: passport_enum
-              values:
-                - RUSSIAN
-                - AMERICAN
-                - GERMAN
-                - FRENCH
-                - JAPANESE
-                - CHINESE
-                - INDIAN
-                - BRAZILIAN
-                - CANADIAN
-                - AUSTRALIAN
-                - changeSet:
-                    id: 9
-                    author: user
-                    changes:
-                      - insert:
-                          tableName: users1
-                          columns:
-                            - column: { name: user_id, valueNumeric: 1 }
-                            - column: { name: passport, value: RUSSIAN }
-                      - insert:
-                          tableName: users1
-                          columns:
-                            - column: { name: user_id, valueNumeric: 1 }
-                            - column: { name: passport, value: GERMAN }
-                      - insert:
-                          tableName: users1
-                          columns:
-                            - column: { name: user_id, valueNumeric: 3 }
-                            - column: { name: passport, value: AMERICAN }
-                      - insert:
-                          tableName: users1
-                          columns:
-                            - column: { name: user_id, valueNumeric: 2 }
-                            - column: { name: passport, value: CHINESE }
-                      - insert:
-                          tableName: users1
-                          columns:
-                            - column: { name: user_id, valueNumeric: 3 }
-                            - column: { name: passport, value: FRENCH }
-                      - insert:
-                          tableName: users1
-                          columns:
-                            - column: { name: user_id, valueNumeric: 4 }
-                            - column: { name: passport, value: JAPANESE }
-                      - insert:
-                          tableName: users1
-                          columns:
-                            - column: { name: user_id, valueNumeric: 4 }
-                            - column: { name: passport, value: CANADIAN }
-                      - insert:
-                          tableName: users1
-                          columns:
-                            - column: { name: user_id, valueNumeric: 2 }
-                            - column: { name: passport, value: BRAZILIAN }
-                      - insert:
-                          tableName: users1
-                          columns:
-                            - column: { name: user_id, valueNumeric: 1 }
-                            - column: { name: passport, value: INDIAN }
-                      - insert:
-                          tableName: users1
-                          columns:
-                            - column: { name: user_id, valueNumeric: 2 }
-                            - column: { name: passport, value: AUSTRALIAN }
+CREATE TYPE passport_enum AS ENUM (
+    'RUSSIAN',
+    'AMERICAN',
+    'GERMAN',
+    'FRENCH',
+    'JAPANESE',
+    'CHINESE',
+    'INDIAN',
+    'BRAZILIAN',
+    'CANADIAN',
+    'AUSTRALIAN'
+    );
+
+CREATE TABLE users1
+(
+    id       SERIAL PRIMARY KEY,
+    user_id   INT,
+    FOREIGN KEY (user_id) REFERENCES users(user_id),
+    passport passport_enum NOT NULL
+
+);
+
+INSERT INTO users1(user_id, passport)
+VALUES (1, 'RUSSIAN'),
+       (1, 'GERMAN'),
+       (3, 'AMERICAN'),
+       (2, 'CHINESE'),
+       (3, 'FRENCH'),
+       (4, 'JAPANESE'),
+       (4, 'CANADIAN'),
+       (2, 'BRAZILIAN'),
+       (1, 'INDIAN'),
+       (2, 'AUSTRALIAN');
