@@ -1,11 +1,12 @@
 databaseChangeLog:
   - include:
-      file: db/changelog/changeset/create-users-table.sql
-        - include:
-              file: db/changelog/changeset/create-books-table.sql
-                - include:
-                file: db/changelog/changeset/create-favorite_books-table.sql
-                  - include:
-                  file: db/changelog/changeset/create-passport_enum-table.sql
+        file: db/changelog/changeset/create-favorite_books-table.sql
+  - include:
+        file: db/changelog/changeset/create-books-table.sql
+  - include:
+        file: db/changelog/changeset/create-passport_enum-table.sql
+  - include:
+        file: db/changelog/changeset/create-users-table.sql
+
 
 
