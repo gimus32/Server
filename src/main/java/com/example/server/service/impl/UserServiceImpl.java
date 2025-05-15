@@ -1,8 +1,11 @@
 package com.example.server.service.impl;
 
+import com.example.server.dto.BookDto;
 import com.example.server.dto.UserDto;
 import com.example.server.mapping.UserMapper;
+import com.example.server.model.BookEntity;
 import com.example.server.model.UserEntity;
+import com.example.server.repository.BookRepository;
 import com.example.server.repository.UserRepository;
 import com.example.server.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -14,12 +17,15 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
+
 @Service
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
     private final UserMapper userMapper;
+    private final BookRepository bookRepository;
 
 
     @Override
@@ -53,6 +59,20 @@ public class UserServiceImpl implements UserService {
     @Transactional(readOnly = true)
     public void deleteUserById(Long id) {
         userRepository.deleteById(id);
+    }
+    @Override
+    @Transactional
+    public List<BookDto> findUserBooks(Long userId) {
+        List<BookEntity> books = bookRepository.findAllByUserId(userId);
+        return userMapper.toDtoBook(books);
+    }
+
+    @Override
+    @Transactional
+    public List<BookDto> findUserFavoriteBooks(Long userId) {
+        UserEntity user = userRepository.findById(userId)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+        return userMapper.toDtoBook(user.getFavoriteBooks());
     }
 
 }

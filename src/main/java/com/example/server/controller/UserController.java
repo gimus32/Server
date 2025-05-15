@@ -1,5 +1,6 @@
 package com.example.server.controller;
 
+import com.example.server.dto.BookDto;
 import com.example.server.dto.UserDto;
 import com.example.server.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -42,7 +43,19 @@ public class UserController {
         userService.deleteUserById(id);
         return ResponseEntity.noContent().build();
     }
+    @GetMapping("/user/{userId}/books")
+    public ResponseEntity<List<BookDto>> getUserBooks(@PathVariable Long userId) {
+        return ResponseEntity.ok(userService.findUserBooks(userId));
+    }
+
+    @GetMapping("/user/{userId}/favorites")
+    public ResponseEntity<List<BookDto>> getUserFavoriteBooks(@PathVariable Long userId) {
+        return ResponseEntity.ok(userService.findUserFavoriteBooks(userId));
+    }
+
+
 }
+
 
 //Паттерн
 //Архитектурный

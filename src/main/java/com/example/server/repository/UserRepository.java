@@ -1,6 +1,8 @@
 package com.example.server.repository;
 
+import com.example.server.model.BookEntity;
 import com.example.server.model.UserEntity;
+import jakarta.persistence.Id;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
