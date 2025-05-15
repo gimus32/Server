@@ -3,6 +3,8 @@ package com.example.server.model;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.List;
+
 @Entity
 @Table(name = "users")
 @Data
@@ -26,4 +28,16 @@ public class UserEntity {
 
     @Column(name = "user_phone")
     private String phone;
+
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    private List<BookEntity> books;
+
+    @ManyToMany
+    @JoinTable(
+            name = "favorite_books",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "book_id")
+    )
+    private List<BookEntity> favoriteBooks;
 }
+
