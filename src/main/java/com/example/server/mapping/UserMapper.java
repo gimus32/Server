@@ -1,8 +1,10 @@
 package com.example.server.mapping;
 
 import com.example.server.dto.BookDto;
+import com.example.server.dto.PassportDto;
 import com.example.server.dto.UserDto;
 import com.example.server.model.BookEntity;
+import com.example.server.model.PassportEntity;
 import com.example.server.model.UserEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -18,4 +20,6 @@ public interface UserMapper {
     List<UserDto> toDtoList(List<UserEntity> userEntities);
     @Mapping(target = "id", ignore = true)
     List<BookDto> toDtoBook(List<BookEntity> bookEntities);
+    @Mapping(target = "id", ignore = true)
+    List<PassportDto> toDtoPassport(List<PassportEntity> passportEntities);
 }

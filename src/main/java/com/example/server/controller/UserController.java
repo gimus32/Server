@@ -1,6 +1,7 @@
 package com.example.server.controller;
 
 import com.example.server.dto.BookDto;
+import com.example.server.dto.PassportDto;
 import com.example.server.dto.UserDto;
 import com.example.server.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -31,6 +32,7 @@ public class UserController {
         userService.findUsersByAgeRange(ageRange.getMinAge(), ageRange.getMaxAge());
         return List.copyOf(userService.findUsersByAgeRange(ageRange.getMinAge(), ageRange.getMaxAge()));
     }
+
     @GetMapping("/user/name")
     public Page<UserDto> getUsersByName(@RequestParam(defaultValue = "") String name,
                                         @RequestParam(defaultValue = "0") int page,
@@ -38,11 +40,13 @@ public class UserController {
         return userService.findUsersByNameContaining(name, page, size);
 
     }
+
     @DeleteMapping("/user/id")
     public ResponseEntity<Void> deleteUser(@RequestParam(defaultValue = "1") Long id) {
         userService.deleteUserById(id);
         return ResponseEntity.noContent().build();
     }
+
     @GetMapping("/user/{userId}/books")
     public ResponseEntity<List<BookDto>> getUserBooks(@PathVariable Long userId) {
         return ResponseEntity.ok(userService.findUserBooks(userId));
@@ -53,7 +57,10 @@ public class UserController {
         return ResponseEntity.ok(userService.findUserFavoriteBooks(userId));
     }
 
-
+    @PostMapping("/user/{userId}/passports")
+    public ResponseEntity<List<PassportDto>> getUserPassports(@PathVariable Long userId) {
+        return ResponseEntity.ok(userService.findUserPassports(userId));
+    }
 }
 
 

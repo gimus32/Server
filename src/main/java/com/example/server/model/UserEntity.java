@@ -39,5 +39,9 @@ public class UserEntity {
             inverseJoinColumns = @JoinColumn(name = "book_id")
     )
     private List<BookEntity> favoriteBooks;
+
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    private List<PassportEntity> passports;
+
 }
 
