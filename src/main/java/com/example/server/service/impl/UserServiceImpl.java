@@ -1,11 +1,14 @@
 package com.example.server.service.impl;
 
 import com.example.server.dto.BookDto;
+import com.example.server.dto.PassportDto;
 import com.example.server.dto.UserDto;
 import com.example.server.mapping.UserMapper;
 import com.example.server.model.BookEntity;
+import com.example.server.model.PassportEntity;
 import com.example.server.model.UserEntity;
 import com.example.server.repository.BookRepository;
+import com.example.server.repository.PassportRepository;
 import com.example.server.repository.UserRepository;
 import com.example.server.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -17,7 +20,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
 
 @Service
 @RequiredArgsConstructor
@@ -26,7 +28,7 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final UserMapper userMapper;
     private final BookRepository bookRepository;
-
+    private final PassportRepository passportRepository;
 
     @Override
     @Transactional
@@ -73,6 +75,15 @@ public class UserServiceImpl implements UserService {
         UserEntity user = userRepository.findById(userId)
                 .orElseThrow(() -> new RuntimeException("User not found"));
         return userMapper.toDtoBook(user.getFavoriteBooks());
+    }
+
+    @Override
+    @Transactional
+    public List<PassportDto> findUserPassports(Long userId) {
+        List<PassportEntity> passports = passportRepository.findAllByUser_Id(userId);
+        return userMapper.toDtoPassport(passports);
+
+
     }
 
 }

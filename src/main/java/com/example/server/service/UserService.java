@@ -1,6 +1,7 @@
 package com.example.server.service;
 
 import com.example.server.dto.BookDto;
+import com.example.server.dto.PassportDto;
 import com.example.server.dto.UserDto;
 import org.springframework.data.domain.Page;
 
@@ -16,6 +17,7 @@ public interface UserService {
 
     List<BookDto> findUserBooks(Long userId);
     List<BookDto> findUserFavoriteBooks(Long userId);
+    List<PassportDto> findUserPassports(Long userId);
 }
 
 

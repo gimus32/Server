@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
-@Table(name = "passportEnum")
+@Table(name = "users1")
 @Data
 public class PassportEntity {
     @Id
@@ -16,7 +16,8 @@ public class PassportEntity {
     private PassportEnum passport;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", referencedColumnName = "user_id")
     private UserEntity user;
+
 
 }
