@@ -1,5 +1,6 @@
 package com.example.server.controller;
 
+import com.example.server.dto.AgeRangeDto;
 import com.example.server.dto.BookDto;
 import com.example.server.dto.PassportDto;
 import com.example.server.dto.UserDto;
@@ -8,7 +9,14 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.DeleteMapping;
+
 
 import java.util.List;
 
@@ -18,27 +26,23 @@ public class UserController {
 
     private final UserService userService;
 
-
     @PostMapping("user/create")
     public ResponseEntity<String> createUser(@RequestBody UserDto user) {
         userService.create(user);
         return ResponseEntity.status(HttpStatus.OK).body("User created successfully");
-
     }
 
-
     @PostMapping("/users/age")
-    public List<UserDto> getUsersByAgeRange(@RequestBody AgeRange ageRange) {
-        userService.findUsersByAgeRange(ageRange.getMinAge(), ageRange.getMaxAge());
-        return List.copyOf(userService.findUsersByAgeRange(ageRange.getMinAge(), ageRange.getMaxAge()));
+    public List<UserDto> getUsersByAgeRange(@RequestBody AgeRangeDto ageRange) {
+        userService.findUsersByAgeRange(ageRange.minAge(), ageRange.maxAge());
+        return List.copyOf(userService.findUsersByAgeRange(ageRange.minAge(), ageRange.maxAge()));
     }
 
     @GetMapping("/user/name")
-    public Page<UserDto> getUsersByName(@RequestParam(defaultValue = "") String name,
+    public Page<UserDto> getUsersByName(@RequestParam String name,
                                         @RequestParam(defaultValue = "0") int page,
                                         @RequestParam(defaultValue = "10") int size) {
         return userService.findUsersByNameContaining(name, page, size);
-
     }
 
     @DeleteMapping("/user/id")

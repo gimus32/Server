@@ -1,4 +1,4 @@
-CREATE TABLE favorite_books
+CREATE TABLE IF NOT EXISTS favorite_books
 (
     favorite_book_id SERIAL PRIMARY KEY,
     user_id          INT,

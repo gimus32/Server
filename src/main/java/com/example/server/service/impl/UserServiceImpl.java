@@ -4,9 +4,9 @@ import com.example.server.dto.BookDto;
 import com.example.server.dto.PassportDto;
 import com.example.server.dto.UserDto;
 import com.example.server.mapping.UserMapper;
-import com.example.server.model.BookEntity;
-import com.example.server.model.PassportEntity;
-import com.example.server.model.UserEntity;
+import com.example.server.model.entity.BookEntity;
+import com.example.server.model.entity.PassportEntity;
+import com.example.server.model.entity.UserEntity;
 import com.example.server.repository.BookRepository;
 import com.example.server.repository.PassportRepository;
 import com.example.server.repository.UserRepository;
@@ -82,8 +82,6 @@ public class UserServiceImpl implements UserService {
     public List<PassportDto> findUserPassports(Long userId) {
         List<PassportEntity> passports = passportRepository.findAllByUser_Id(userId);
         return userMapper.toDtoPassport(passports);
-
-
     }
 
 }

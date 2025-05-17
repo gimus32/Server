@@ -1,4 +1,4 @@
-package com.example.server.model;
+package com.example.server.model.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
@@ -29,9 +29,6 @@ public class UserEntity {
     @Column(name = "user_phone")
     private String phone;
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
-    private List<BookEntity> books;
-
     @ManyToMany
     @JoinTable(
             name = "favorite_books",
@@ -39,9 +36,5 @@ public class UserEntity {
             inverseJoinColumns = @JoinColumn(name = "book_id")
     )
     private List<BookEntity> favoriteBooks;
-
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
-    private List<PassportEntity> passports;
-
 }
 

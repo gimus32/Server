@@ -1,8 +1,15 @@
-package com.example.server.model;
+package com.example.server.model.entity;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Id;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Column;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
 import lombok.Data;
-
 import java.util.List;
 
 @Entity
@@ -23,5 +30,4 @@ public class BookEntity {
 
     @ManyToMany(mappedBy = "favoriteBooks")
     private List<UserEntity> likedByUsers;
-
 }
