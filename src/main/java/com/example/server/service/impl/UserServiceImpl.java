@@ -1,13 +1,16 @@
 package com.example.server.service.impl;
 
 import com.example.server.dto.BookDto;
+import com.example.server.dto.FavoriteBooksDto;
 import com.example.server.dto.PassportDto;
 import com.example.server.dto.UserDto;
 import com.example.server.mapping.UserMapper;
-import com.example.server.model.BookEntity;
-import com.example.server.model.PassportEntity;
-import com.example.server.model.UserEntity;
+import com.example.server.model.entity.BookEntity;
+import com.example.server.model.entity.FavoriteBooksEntity;
+import com.example.server.model.entity.PassportEntity;
+import com.example.server.model.entity.UserEntity;
 import com.example.server.repository.BookRepository;
+import com.example.server.repository.FavoriteBooksRepository;
 import com.example.server.repository.PassportRepository;
 import com.example.server.repository.UserRepository;
 import com.example.server.service.UserService;
@@ -17,9 +20,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.List;
-
 
 @Service
 @RequiredArgsConstructor
@@ -29,7 +30,7 @@ public class UserServiceImpl implements UserService {
     private final UserMapper userMapper;
     private final BookRepository bookRepository;
     private final PassportRepository passportRepository;
-
+    private final FavoriteBooksRepository favoriteBookRepository;
     @Override
     @Transactional
     public void create(UserDto user) {
@@ -71,10 +72,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
-    public List<BookDto> findUserFavoriteBooks(Long userId) {
-        UserEntity user = userRepository.findById(userId)
-                .orElseThrow(() -> new RuntimeException("User not found"));
-        return userMapper.toDtoBook(user.getFavoriteBooks());
+    public List<FavoriteBooksDto> findUserFavoriteBooks(Long userId) {
+        List<FavoriteBooksEntity> favoriteBooks = favoriteBookRepository.findByUserId(userId);
+        return userMapper.toDtoFavoriteBooks(favoriteBooks);
     }
 
     @Override
@@ -82,10 +82,7 @@ public class UserServiceImpl implements UserService {
     public List<PassportDto> findUserPassports(Long userId) {
         List<PassportEntity> passports = passportRepository.findAllByUser_Id(userId);
         return userMapper.toDtoPassport(passports);
-
-
     }
-
 }
 
 

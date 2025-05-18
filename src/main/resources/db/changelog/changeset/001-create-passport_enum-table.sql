@@ -1,26 +1,24 @@
 CREATE TYPE passport_enum AS ENUM (
     'RUSSIAN',
-    'AMERICAN',
     'GERMAN',
+    'AMERICAN',
+    'CHINESE',
     'FRENCH',
     'JAPANESE',
-    'CHINESE',
-    'INDIAN',
-    'BRAZILIAN',
     'CANADIAN',
+    'BRAZILIAN',
+    'INDIAN',
     'AUSTRALIAN'
-    );
-
-CREATE TABLE users1
+);
+CREATE TABLE IF NOT EXISTS passport
 (
     id       SERIAL PRIMARY KEY,
     user_id   INT,
     FOREIGN KEY (user_id) REFERENCES users(user_id),
     passport passport_enum NOT NULL
-
 );
 
-INSERT INTO users1(user_id, passport)
+INSERT INTO passport(user_id, passport)
 VALUES (1, 'RUSSIAN'),
        (1, 'GERMAN'),
        (3, 'AMERICAN'),

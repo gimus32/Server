@@ -1,5 +1,4 @@
-
-CREATE TABLE users
+CREATE TABLE IF NOT EXISTS users
 (
     user_id    SERIAL PRIMARY KEY,
     user_name  VARCHAR(255),
@@ -8,7 +7,6 @@ CREATE TABLE users
     user_email VARCHAR(255),
     user_phone VARCHAR(28)
 );
-
 
 INSERT INTO users(user_name, user_pass, user_age, user_email, user_phone)
 VALUES ('Nikita', '8984', '13', 'nikitarussia27@gmail.com', '89995550323'),
