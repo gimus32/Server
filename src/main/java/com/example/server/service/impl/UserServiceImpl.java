@@ -31,6 +31,7 @@ public class UserServiceImpl implements UserService {
     private final BookRepository bookRepository;
     private final PassportRepository passportRepository;
     private final FavoriteBooksRepository favoriteBookRepository;
+
     @Override
     @Transactional
     public void create(UserDto user) {
@@ -58,11 +59,13 @@ public class UserServiceImpl implements UserService {
                 entity.getPhone()
         ));
     }
+
     @Override
     @Transactional(readOnly = true)
     public void deleteUserById(Long id) {
         userRepository.deleteById(id);
     }
+
     @Override
     @Transactional
     public List<BookDto> findUserBooks(Long userId) {
