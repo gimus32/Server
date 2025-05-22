@@ -1,4 +1,4 @@
-CREATE TABLE books
+CREATE TABLE IF NOT EXISTS books
 (
     book_id    SERIAL PRIMARY KEY,
     user_id    INT,

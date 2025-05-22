@@ -25,6 +25,7 @@ repositories {
 }
 
 dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-data-rest'
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
@@ -40,6 +41,7 @@ dependencies {
 	annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.3.Final'
 	implementation 'org.liquibase:liquibase-core:4.26.0'
 	implementation 'org.postgresql:postgresql:42.7.3'
+	implementation 'io.jsonwebtoken:jjwt:0.9.1'
 }
 
 

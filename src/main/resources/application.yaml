@@ -10,3 +10,6 @@ spring:
     change-log: classpath:/db/changelog/db.changelog-master.yaml
     enabled: true
 
+  jwt:
+    secret: yourSecretKey
+    expiration: 3600000
